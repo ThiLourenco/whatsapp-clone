@@ -151,6 +151,118 @@ class WhatsAppController{
             let formData = new FormData(this.el.formPanelAddContact);
 
         });
+
+        this.el.contactsMessagesList.querySelectorAll('.contact-item').forEach(item => {
+
+            item.on('click', e => {
+
+                this.el.home.hide();
+                this.el.main.css({
+                    display: 'flex'
+                });
+                
+            });
+
+        });
+
+        this.el.btnAttach.on('click', e => {
+
+            e.stopPropagation();
+            this.el.menuAttach.addClass('open');
+            document.addEventListener('click', this.closeMenuAttach.bind(this));
+        });
+
+        this.el.btnAttachCamera.on('click', e => {
+
+            this.closeAllMainPanel();
+            this.el.panelCamera.addClass('open');
+            this.el.panelCamera.css({
+                'height': 'calc(100% - 120px)'
+            });
+
+        });
+
+        this.el.btnClosePanelCamera.on('click', e => {
+
+            this.closeAllMainPanel();
+            this.el.panelMessagesContainer.show();
+
+        });
+
+        this.el.btnTakePicture.on('click', e => {
+
+            console.log('Take picture')
+
+        });
+
+        this.el.btnAttachContact.on('click', e => {
+            
+            this.el.modalContacts.show();
+
+        });
+
+        this.el.btnCloseModalContacts.on('click', e => {
+
+            this.el.modalContacts.hide();
+
+        });
+
+        this.el.btnAttachDocument.on('click', e => {
+
+            this.closeAllMainPanel();
+            this.el.panelDocumentPreview.addClass('open');
+            this.el.panelDocumentPreview.css({
+                'height': '120%'
+            });
+
+        });
+
+        this.el.btnClosePanelDocumentPreview.on('click', e => {
+
+            this.closeAllMainPanel();
+            this.el.panelMessagesContainer.show();
+
+        });
+
+        this.el.btnSendDocument.on('click', e => {
+
+            console.log('send document')
+
+        });
+
+        this.el.btnAttachPhoto.on('click', e => {
+
+            this.el.inputPhoto.click();
+
+        });
+
+        this.el.inputPhoto.on('change', e => {
+
+            console.log(this.el.inputPhoto.files);
+
+            [...this.el.inputPhoto.files].forEach(file => {
+
+                console.log(file);
+
+            });
+
+        });
+        
+    }
+
+    closeAllMainPanel() {
+
+        this.el.panelMessagesContainer.hide();
+        this.el.panelDocumentPreview.removeClass('open');
+        this.el.panelCamera.removeClass('open');
+
+    }
+
+    closeMenuAttach(e) {
+
+        document.removeEventListener('click', this.closeMenuAttach);
+        this.el.menuAttach.removeClass('open');
+
     }
 
     closeAllLeftPanel() {
