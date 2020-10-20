@@ -1,6 +1,6 @@
 # Projeto WhatsApp Clone
 
-Projeto desenvolvido como exemplo do Curso Completo de JavaScript na Udemy.com.
+Projeto do curso Completo de JavaScript da HCode Treinamentos.
 
 ### Projeto
 ![WhatsApp Clone](https://firebasestorage.googleapis.com/v0/b/hcode-com-br.appspot.com/o/whatsapp.jpg?alt=media&token=5fc78e3b-4871-424f-abfa-b765f2515d0c)
