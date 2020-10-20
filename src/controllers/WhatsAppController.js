@@ -1,396 +1,396 @@
 class WhatsAppController{
 
-    constructor() {
-
-        this.elementPrototype();
-        this.loadElements();
-        this.initEvents();
-    }
-    
-    loadElements() {
-        
-        this.el = {};
-
-        document.querySelectorAll('[id]').forEach(element => {
+	constructor() {
 
-            this.el[Format.getCamelCase(element.id)] = element;
+		this.elementPrototype();
+		this.loadElements();
+		this.initEvents();
+	}
 
-        });
+	loadElements() {
+			
+		this.el = {};
 
-    }
+		document.querySelectorAll('[id]').forEach(element => {
 
-    elementPrototype() {
+		this.el[Format.getCamelCase(element.id)] = element;
 
-        Element.prototype.hide = function() {
-            this.style.display = 'none';
-            return this;
-        }
+		});
 
-        Element.prototype.show = function() {
-            this.style.display = 'block';         
-            return this;
-        }
+	}
 
-        Element.prototype.toggle = function() {
-            this.style.display = (this.style.display === 'none') ? 'block' : 'none';
-            return this;
-        }
-        // criar mais de um event usando on()
-        Element.prototype.on = function (events, fn) {
-            events.split(' ').forEach(event => {
-                this.addEventListener(event, fn);
-            });
-            return this;
-        }
+	elementPrototype() {
 
-        Element.prototype.css = function(styles) {
-            for(let name in styles) {
-                this.style[name] = styles[name];
-            }
-            return this;
-        }
+		Element.prototype.hide = function() {
+			this.style.display = 'none';
+			return this;
+		}
 
-        Element.prototype.addClass = function(name) {
-            this.classList.add(name);
-            return this;
-        }
+		Element.prototype.show = function() {
+			this.style.display = 'block';         
+			return this;
+		}
 
-        Element.prototype.removeClass = function(name) {
-            this.classList.remove(name);
-            return this;
-        }
+		Element.prototype.toggle = function() {
+				this.style.display = (this.style.display === 'none') ? 'block' : 'none';
+				return this;
+		}
+		// criar mais de um event usando on()
+		Element.prototype.on = function (events, fn) {
+			events.split(' ').forEach(event => {
+					this.addEventListener(event, fn);
+			});
+			return this;
+		}
 
-        Element.prototype.toggleClass = function(name) {
-            this.classList.toggle(name);
-            return this;
-        }
+		Element.prototype.css = function(styles) {
+			for(let name in styles) {
+					this.style[name] = styles[name];
+			}
+			return this;
+		}
 
-        Element.prototype.hasClass = function(name) {
-            return this.classList.contains(name);
-        }
+		Element.prototype.addClass = function(name) {
+			this.classList.add(name);
+			return this;
+		}
 
-        HTMLFormElement.prototype.getForm = function() {
+		Element.prototype.removeClass = function(name) {
+			this.classList.remove(name);
+			return this;
+		}
 
-            return new FormData(this);
-        }
+		Element.prototype.toggleClass = function(name) {
+			this.classList.toggle(name);
+			return this;
+		}
 
-        HTMLFormElement.prototype.toJSON = function() {
-            let json = {};
+		Element.prototype.hasClass = function(name) {
+			return this.classList.contains(name);
+		}
 
-            this.getForm().forEach((value, key) => {
+		HTMLFormElement.prototype.getForm = function() {
 
-                json[key] = value;
-            });
-            
-            return json;
-        }
-    }
+			return new FormData(this);
+		}
 
-    initEvents() {
+		HTMLFormElement.prototype.toJSON = function() {
+			let json = {};
 
-        this.el.myPhoto.on('click', e => {
+			this.getForm().forEach((value, key) => {
 
-            this.closeAllLeftPanel();
-            this.el.panelEditProfile.show();
+				json[key] = value;
+			});
+				
+			return json;
+		}
+	}
 
-            setTimeout(() => {
-                this.el.panelEditProfile.addClass('open');
-            }, 300);
+	initEvents() {
 
-        });
+		this.el.myPhoto.on('click', e => {
 
-        this.el.btnNewContact.on('click', e => {
-            
-            this.closeAllLeftPanel();
-            this.el.panelAddContact.show();
+			this.closeAllLeftPanel();
+			this.el.panelEditProfile.show();
 
-            setTimeout(() => {
-                this.el.panelAddContact.addClass('open');
-            }, 300);
-            
-        });
+			setTimeout(() => {
+					this.el.panelEditProfile.addClass('open');
+			}, 300);
 
-        this.el.btnClosePanelEditProfile.on('click', e => {
+		});
 
-            this.el.panelEditProfile.removeClass('open');
+		this.el.btnNewContact.on('click', e => {
+				
+			this.closeAllLeftPanel();
+			this.el.panelAddContact.show();
 
-        });
+			setTimeout(() => {
+					this.el.panelAddContact.addClass('open');
+			}, 300);
+			
+		});
 
-        this.el.btnClosePanelAddContact.on('click', e => {
+		this.el.btnClosePanelEditProfile.on('click', e => {
 
-            this.el.panelAddContact.removeClass('open');
+			this.el.panelEditProfile.removeClass('open');
 
-        });
+		});
 
-        this.el.photoContainerEditProfile.on('click', e => {
+		this.el.btnClosePanelAddContact.on('click', e => {
 
-            this.el.inputProfilePhoto.click();
+			this.el.panelAddContact.removeClass('open');
 
-        });
+		});
 
-        this.el.inputNamePanelEditProfile.on('keypress', e => {
+		this.el.photoContainerEditProfile.on('click', e => {
 
-            if (e.key === 'Enter') {
+			this.el.inputProfilePhoto.click();
 
-                e.preventDefault();
-                this.el.btnSavePanelEditProfile.click();
-            }
+		});
 
-        });
+		this.el.inputNamePanelEditProfile.on('keypress', e => {
 
-        this.el.btnSavePanelEditProfile.on('click', e => {
+			if (e.key === 'Enter') {
 
-            console.log(this.el.inputNamePanelEditProfile.innerHTML);
+				e.preventDefault();
+				this.el.btnSavePanelEditProfile.click();
+			}
 
-        });
+		});
 
-        this.el.formPanelAddContact.on('submit', e => {
+			this.el.btnSavePanelEditProfile.on('click', e => {
 
-            e.preventDefault();
+				console.log(this.el.inputNamePanelEditProfile.innerHTML);
 
-            let formData = new FormData(this.el.formPanelAddContact);
+			});
 
-        });
+			this.el.formPanelAddContact.on('submit', e => {
 
-        this.el.contactsMessagesList.querySelectorAll('.contact-item').forEach(item => {
+				e.preventDefault();
 
-            item.on('click', e => {
+				let formData = new FormData(this.el.formPanelAddContact);
 
-                this.el.home.hide();
-                this.el.main.css({
-                    display: 'flex'
-                });
-                
-            });
+			});
 
-        });
+			this.el.contactsMessagesList.querySelectorAll('.contact-item').forEach(item => {
 
-        this.el.btnAttach.on('click', e => {
+				item.on('click', e => {
 
-            e.stopPropagation();
-            this.el.menuAttach.addClass('open');
-            document.addEventListener('click', this.closeMenuAttach.bind(this));
-        });
+					this.el.home.hide();
+					this.el.main.css({
+							display: 'flex'
+					});
+						
+				});
 
-        this.el.btnAttachCamera.on('click', e => {
+			});
 
-            this.closeAllMainPanel();
-            this.el.panelCamera.addClass('open');
-            this.el.panelCamera.css({
-                'height': 'calc(100% - 120px)'
-            });
+			this.el.btnAttach.on('click', e => {
 
-        });
+				e.stopPropagation();
+				this.el.menuAttach.addClass('open');
+				document.addEventListener('click', this.closeMenuAttach.bind(this));
+			});
 
-        this.el.btnClosePanelCamera.on('click', e => {
+			this.el.btnAttachCamera.on('click', e => {
 
-            this.closeAllMainPanel();
-            this.el.panelMessagesContainer.show();
+				this.closeAllMainPanel();
+				this.el.panelCamera.addClass('open');
+				this.el.panelCamera.css({
+						'height': 'calc(100% - 120px)'
+				});
 
-        });
+			});
 
-        this.el.btnTakePicture.on('click', e => {
+			this.el.btnClosePanelCamera.on('click', e => {
 
-            console.log('Take picture')
+				this.closeAllMainPanel();
+				this.el.panelMessagesContainer.show();
 
-        });
+			});
 
-        this.el.btnAttachContact.on('click', e => {
-            
-            this.el.modalContacts.show();
+			this.el.btnTakePicture.on('click', e => {
 
-        });
+				console.log('Take picture')
 
-        this.el.btnCloseModalContacts.on('click', e => {
+			});
 
-            this.el.modalContacts.hide();
+			this.el.btnAttachContact.on('click', e => {
+					
+				this.el.modalContacts.show();
 
-        });
+			});
 
-        this.el.btnAttachDocument.on('click', e => {
+			this.el.btnCloseModalContacts.on('click', e => {
 
-            this.closeAllMainPanel();
-            this.el.panelDocumentPreview.addClass('open');
-            this.el.panelDocumentPreview.css({
-                'height': '120%'
-            });
+				this.el.modalContacts.hide();
 
-        });
+			});
 
-        this.el.btnClosePanelDocumentPreview.on('click', e => {
+			this.el.btnAttachDocument.on('click', e => {
 
-            this.closeAllMainPanel();
-            this.el.panelMessagesContainer.show();
+				this.closeAllMainPanel();
+				this.el.panelDocumentPreview.addClass('open');
+				this.el.panelDocumentPreview.css({
+						'height': '120%'
+				});
 
-        });
+			});
 
-        this.el.btnSendDocument.on('click', e => {
+			this.el.btnClosePanelDocumentPreview.on('click', e => {
 
-            console.log('send document')
+				this.closeAllMainPanel();
+				this.el.panelMessagesContainer.show();
 
-        });
+			});
 
-        this.el.btnAttachPhoto.on('click', e => {
+			this.el.btnSendDocument.on('click', e => {
 
-            this.el.inputPhoto.click();
+				console.log('send document')
 
-        });
+			});
 
-        this.el.inputPhoto.on('change', e => {
+			this.el.btnAttachPhoto.on('click', e => {
 
-            console.log(this.el.inputPhoto.files);
+				this.el.inputPhoto.click();
 
-            [...this.el.inputPhoto.files].forEach(file => {
+			});
 
-                console.log(file);
+			this.el.inputPhoto.on('change', e => {
 
-            });
+				console.log(this.el.inputPhoto.files);
 
-        });
+				[...this.el.inputPhoto.files].forEach(file => {
 
-        this.el.btnSendMicrophone.on('click', e => {
+					console.log(file);
 
-            this.el.recordMicrophone.show();
-            this.el.btnSendMicrophone.hide();
-            this.startRecordMicrophoneTime();
+				});
 
-        });
+			});
 
-        this.el.btnCancelMicrophone.on('click', e => {
+			this.el.btnSendMicrophone.on('click', e => {
 
-            this.closeRecordMicrophone();
+				this.el.recordMicrophone.show();
+				this.el.btnSendMicrophone.hide();
+				this.startRecordMicrophoneTime();
 
-        });
+			});
 
-        this.el.btnFinishMicrophone.on('click', e => {
+			this.el.btnCancelMicrophone.on('click', e => {
 
-            this.closeRecordMicrophone();
+				this.closeRecordMicrophone();
 
-        });
+			});
 
-        this.el.inputText.on('keypress', e => {
+			this.el.btnFinishMicrophone.on('click', e => {
 
-            if(e.key === 'Enter' && !e.ctrlKey) {
+				this.closeRecordMicrophone();
 
-                e.preventDefault();
-                this.el.btnSend.click();
-            }
+			});
 
-        });
+			this.el.inputText.on('keypress', e => {
 
-        this.el.inputText.on('keyup', e => {
+				if(e.key === 'Enter' && !e.ctrlKey) {
 
-            if(this.el.inputText.innerHTML.length) {
+					e.preventDefault();
+					this.el.btnSend.click();
+				}
 
-                this.el.inputPlaceholder.hide();
-                this.el.btnSendMicrophone.hide();
-                this.el.btnSend.show();
+			});
 
-            } else {
+			this.el.inputText.on('keyup', e => {
 
-                this.el.inputPlaceholder.show();
-                this.el.btnSendMicrophone.show();
-                this.el.btnSend.hide();
-                
-            }
+				if(this.el.inputText.innerHTML.length) {
 
-        });
+					this.el.inputPlaceholder.hide();
+					this.el.btnSendMicrophone.hide();
+					this.el.btnSend.show();
 
-        this.el.btnSend.on('click', e => {
+				} else {
 
-            console.log(this.el.inputText.innerHTML)
+					this.el.inputPlaceholder.show();
+					this.el.btnSendMicrophone.show();
+					this.el.btnSend.hide();
+						
+				}
 
-        });
+			});
 
-        this.el.btnEmojis.on('click', e => {
+			this.el.btnSend.on('click', e => {
 
-            this.el.panelEmojis.toggleClass('open');
+				console.log(this.el.inputText.innerHTML)
 
-        });
+			});
 
-        this.el.panelEmojis.querySelectorAll('.emojik').forEach(emoji => {
+			this.el.btnEmojis.on('click', e => {
 
-            emoji.on('click', e => {
+				this.el.panelEmojis.toggleClass('open');
 
-                console.log(emoji.dataset.unicode)
+			});
 
-                let img = this.el.imgEmojiDefault.cloneNode();
+			this.el.panelEmojis.querySelectorAll('.emojik').forEach(emoji => {
 
-                img.style.cssText = emoji.style.cssText;
-                img.dataset.unicode = emoji.dataset.unicode;
-                img.alt = emoji.dataset.unicode;
+				emoji.on('click', e => {
 
-                emoji.classList.forEach(name => {
-                    img.classList.add(name);
-                });
+					console.log(emoji.dataset.unicode)
 
-                let cursor = window.getSelection();
+					let img = this.el.imgEmojiDefault.cloneNode();
 
-                if(!cursor.focusNode || !cursor.focusNode.id == 'input-text') {
-                    this.el.inputText.focus();
-                    cursor = window.getSelection();
-                }
+					img.style.cssText = emoji.style.cssText;
+					img.dataset.unicode = emoji.dataset.unicode;
+					img.alt = emoji.dataset.unicode;
 
-                let range = document.createRange()
+					emoji.classList.forEach(name => {
+							img.classList.add(name);
+					});
 
-                range = cursor.getRangeAt(0);
-                range.deleteContents();
+					let cursor = window.getSelection();
 
-                let frag = document.createDocumentFragment();
+					if(!cursor.focusNode || !cursor.focusNode.id == 'input-text') {
+							this.el.inputText.focus();
+							cursor = window.getSelection();
+					}
 
-                frag.appendChild(img);
+					let range = document.createRange()
 
-                range.insertNode(frag);
+					range = cursor.getRangeAt(0);
+					range.deleteContents();
 
-                range.setStartAfter(img);
+					let frag = document.createDocumentFragment();
 
-                this.el.inputText.dispatchEvent(new Event('keyup'));
+					frag.appendChild(img);
 
-            });
+					range.insertNode(frag);
 
-        });
-        
-    }
+					range.setStartAfter(img);
 
-    startRecordMicrophoneTime() {
+					this.el.inputText.dispatchEvent(new Event('keyup'));
 
-        let start = Date.now();
+				});
 
-        this._recordMicrophoneInterval = setInterval(() => {
+			});
+			
+	}
 
-            this.el.recordMicrophoneTimer.innerHTML = Format.toTime(Date.now() - start);
+	startRecordMicrophoneTime() {
 
-        }, 100);
+		let start = Date.now();
 
-    }
+		this._recordMicrophoneInterval = setInterval(() => {
 
-    closeRecordMicrophone() {
+			this.el.recordMicrophoneTimer.innerHTML = Format.toTime(Date.now() - start);
 
-        this.el.recordMicrophone.hide();
-        this.el.btnSendMicrophone.show();
-        clearInterval(this._recordMicrophoneInterval);
+		}, 100);
 
-    }
+	}
 
-    closeAllMainPanel() {
+	closeRecordMicrophone() {
 
-        this.el.panelMessagesContainer.hide();
-        this.el.panelDocumentPreview.removeClass('open');
-        this.el.panelCamera.removeClass('open');
+	this.el.recordMicrophone.hide();
+	this.el.btnSendMicrophone.show();
+	clearInterval(this._recordMicrophoneInterval);
 
-    }
+	}
 
-    closeMenuAttach(e) {
+	closeAllMainPanel() {
 
-        document.removeEventListener('click', this.closeMenuAttach);
-        this.el.menuAttach.removeClass('open');
+		this.el.panelMessagesContainer.hide();
+		this.el.panelDocumentPreview.removeClass('open');
+		this.el.panelCamera.removeClass('open');
 
-    }
+	}
 
-    closeAllLeftPanel() {
+	closeMenuAttach(e) {
 
-        this.el.panelAddContact.hide();
-        this.el.panelEditProfile.hide();
+		document.removeEventListener('click', this.closeMenuAttach);
+		this.el.menuAttach.removeClass('open');
 
-    }
+	}
+
+	closeAllLeftPanel() {
+
+	this.el.panelAddContact.hide();
+	this.el.panelEditProfile.hide();
+
+	}
 }
