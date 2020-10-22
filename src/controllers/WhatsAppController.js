@@ -1,4 +1,7 @@
-class WhatsAppController{
+import Format from './../utils/Format';
+import CameraController from './CameraController';
+
+export default class WhatsAppController{
 
 	constructor() {
 
@@ -179,6 +182,8 @@ class WhatsAppController{
 				this.el.panelCamera.css({
 						'height': 'calc(100% - 120px)'
 				});
+
+				this._camera = new CameraController(this.el.videoCamera);
 
 			});
 
