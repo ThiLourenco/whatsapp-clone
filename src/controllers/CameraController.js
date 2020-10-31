@@ -8,7 +8,8 @@ export default class CameraController {
         }).then(stream=>{
 
             this._stream = stream;
-            this._videoEl.src = URL.createObjectURL(stream);
+            let mediaStream = new MediaStream(stream);
+            this._videoEl.srcObject = mediaStream;
             this._videoEl.play();
             
         }).catch(err =>{
@@ -22,7 +23,7 @@ export default class CameraController {
         });
     }
 
-    takePicture(mimeType = image/png) {
+    takePicture(mimeType = 'image/png') {
 
         let canvas = document.createElement('canvas');
 
