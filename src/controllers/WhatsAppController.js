@@ -1,15 +1,17 @@
-import Format from './../utils/Format';
-import CameraController from './CameraController';
+import { Format } from './../utils/Format';
+import { CameraController } from './CameraController';
 import { MicrophoneController } from './MicrophoneController';
-import DocumentPreviewController from './DocumentPreviewController';
+import { DocumentPreviewController } from './DocumentPreviewController';
+import { Firebase } from './../utils/Firebase';
 
-export default class WhatsAppController{
+export class WhatsAppController{
 
 	constructor() {
 
 		this.elementPrototype();
 		this.loadElements();
 		this.initEvents();
+		this._firebase = new Firebase();
 	}
 
 	loadElements() {

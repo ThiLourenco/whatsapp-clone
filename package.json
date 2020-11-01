@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Thiago-l/whatsapp-clone#readme",
   "dependencies": {
+    "firebase": "^8.0.0",
     "pdfjs-dist": "^2.0.489",
     "webpack": "^3.1.0",
     "webpack-dev-server": "^2.11.5"
