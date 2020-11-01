@@ -1,6 +1,10 @@
-export default class MicrophoneController {
+import ClassEvent from "../utils/ClassEvent";
+
+export class MicrophoneController extends ClassEvent {
 
   constructor() {
+
+    super();
 
     navigator.mediaDevices.getUserMedia({
         audio: true
