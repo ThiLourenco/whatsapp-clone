@@ -1,5 +1,5 @@
-const firebase = require('firebase');
-require('firebase/firestore');
+const firebase = require('@firebase/app').default;
+require('@firebase/firestore');
 
 export class Firebase {
 
