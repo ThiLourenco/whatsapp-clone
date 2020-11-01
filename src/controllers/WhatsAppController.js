@@ -240,7 +240,7 @@ export default class WhatsAppController{
 				this.closeAllMainPanel();
 				this.el.panelDocumentPreview.addClass('open');
 				this.el.panelDocumentPreview.css({
-						'height': '120%'
+						'height': '100%'
 				});
 				this.el.inputDocument.click();
 
@@ -249,6 +249,10 @@ export default class WhatsAppController{
 			this.el.inputDocument.on('change', e=> {
 
 				if (this.el.inputDocument.files.length) {
+
+					this.el.panelDocumentPreview.css({
+						'height': '1%'
+					});
 
 					let file = this.el.inputDocument.files[0];
 
@@ -260,8 +264,16 @@ export default class WhatsAppController{
 						this.el.infoPanelDocumentPreview.innerHTML = result.info;
 						this.el.imagePanelDocumentPreview.show();
 						this.el.filePanelDocumentPreview.hide();
+
+						this.el.panelDocumentPreview.css({
+							'height': '100%'
+						});
 						
-					}).catch(err=> {
+						}).catch(err=> {
+
+							this.el.panelDocumentPreview.css({
+								'height': '100%'
+						});
 						
 						switch (file.type) {
 
