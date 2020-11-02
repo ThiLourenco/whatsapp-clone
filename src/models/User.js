@@ -29,7 +29,7 @@ export class User extends Model {
         this.fromJSON(doc.data());
 
         success(doc);
-        
+
       });
 
     });
@@ -51,6 +51,12 @@ export class User extends Model {
   static findByEmail(email) {
 
     return User.getRef().doc(email);
+
+  }
+
+  addContact(contact) {
+
+    User.getRef().doc(this.email).collection('contacts').doc(btoa(contact.email)).set(contact.toJSON());
 
   }
 
