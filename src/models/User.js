@@ -69,11 +69,11 @@ export class User extends Model {
 
   }
 
-  getContacts() {
+  getContacts(filter = '') {
 
     return new Promise((success, fail) => {
 
-      User.getContactsRef(this.email).onSnapshot(docs => {
+      User.getContactsRef(this.email).where('name', '>=', filter).onSnapshot(docs => {
 
         let contacts = [];
 
