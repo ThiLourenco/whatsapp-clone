@@ -11,18 +11,18 @@ export class Message extends Model {
   }
 
 	get id() { return this._data.id; }
-  set id(value) { return this._data.id = value; }
+    set id(value) { return this._data.id = value; }
 
-  get content() { return this._data.content; }
-  set content(value) { return this._data.content = value; }
+    get content() { return this._data.content; }
+    set content(value) { return this._data.content = value; }
 
-  get type() { return this._data.type; }
-  set type(value) { return this._data.type = value; }
+    get type() { return this._data.type; }
+    set type(value) { return this._data.type = value; }
 
-  get timeStamp() { return this._data.timeStamp; }
-  set timeStamp(value) { return this._data.timeStamp = value; }
+    get timeStamp() { return this._data.timeStamp; }
+    set timeStamp(value) { return this._data.timeStamp = value; }
 
-  get status() { return this._data.status; }
+    get status() { return this._data.status; }
 	set status(value) { return this._data.status = value; }
 	
 	get preview() { return this._data.preview; }
