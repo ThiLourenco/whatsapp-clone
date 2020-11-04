@@ -1,6 +1,7 @@
 import { Firebase } from "../utils/Firebase";
 import { Model } from "./Model";
 import { Format } from '../utils/Format';
+import { Upload } from "../utils/Upload";
 
 export class Message extends Model {
 
@@ -397,26 +398,7 @@ export class Message extends Model {
 
 	static upload(file, from) {
 
-		return new Promise((success, fail)=> {
-
-			let uploadTask = Firebase.hd().ref(from).child(Date.now() + '_' + file.name).put(file);
-
-			uploadTask.on('state_changed', e=> {
-
-				console.info('TCL: upload', e);
-
-				}, err => {
-					fail(err);
-
-				}, () => {
-					uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-						
-						success(downloadURL);
-
-					});
-
-				});
-		});
+        return Upload.send(file, from);
 
 	}
 
