@@ -2,6 +2,7 @@ import { Format } from './../utils/Format';
 import { CameraController } from './CameraController';
 import { MicrophoneController } from './MicrophoneController';
 import { DocumentPreviewController } from './DocumentPreviewController';
+import { ContactsController } from './ContactsController';
 import { Firebase } from './../utils/Firebase';
 import { User } from './../models/User';
 import { Chat } from './../models/Chat';
@@ -541,14 +542,26 @@ export class WhatsAppController{
 			});
 
 			this.el.btnAttachContact.on('click', e => {
-					
-				this.el.modalContacts.show();
+				
+				this._contactsController = new ContactsController(this.el.modalContacts, this._user);
 
+				this._contactsController.on('select', contact => {
+
+					Message.sendContact(
+						this._contactActive.chatId,
+						this._user.email,
+						contact
+					);
+
+				});
+
+				this._contactsController.open();
+				
 			});
 
 			this.el.btnCloseModalContacts.on('click', e => {
 
-				this.el.modalContacts.hide();
+				this._contactsController.close();
 
 			});
 
