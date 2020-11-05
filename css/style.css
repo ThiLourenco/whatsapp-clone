@@ -16147,3 +16147,9 @@ html[dir=rtl] ._2ICcy:after{
     width: auto;
     text-align: center;
 }
+
+.jN-F5 .copyable-text .selectable-text {
+    border: none;
+    width: 100%;
+    height: 100%;
+}

@@ -11,18 +11,18 @@ export class Message extends Model {
   }
 
 	get id() { return this._data.id; }
-    set id(value) { return this._data.id = value; }
+	set id(value) { return this._data.id = value; }
 
-    get content() { return this._data.content; }
-    set content(value) { return this._data.content = value; }
+	get content() { return this._data.content; }
+	set content(value) { return this._data.content = value; }
 
-    get type() { return this._data.type; }
-    set type(value) { return this._data.type = value; }
+	get type() { return this._data.type; }
+	set type(value) { return this._data.type = value; }
 
-    get timeStamp() { return this._data.timeStamp; }
-    set timeStamp(value) { return this._data.timeStamp = value; }
+	get timeStamp() { return this._data.timeStamp; }
+	set timeStamp(value) { return this._data.timeStamp = value; }
 
-    get status() { return this._data.status; }
+	get status() { return this._data.status; }
 	set status(value) { return this._data.status = value; }
 	
 	get preview() { return this._data.preview; }
@@ -41,13 +41,13 @@ export class Message extends Model {
 	set size(value) { return this._data.size = value; }
 	
 	get from() { return this._data.from; }
-    set from(value) { return this._data.from = value; }
+	set from(value) { return this._data.from = value; }
 
-    get photo() { return this._data.photo; }
-    set photo(value) { return this._data.photo = value; }
+	get photo() { return this._data.photo; }
+	set photo(value) { return this._data.photo = value; }
 
-    get duration() { return this._data.duration; }
-    set duration(value) { return this._data.duration = value; }
+	get duration() { return this._data.duration; }
+	set duration(value) { return this._data.duration = value; }
   
   getViewElement(me = true) {
 
@@ -398,7 +398,7 @@ export class Message extends Model {
 
 	static upload(file, from) {
 
-        return Upload.send(file, from);
+		return Upload.send(file, from);
 
 	}
 
@@ -406,30 +406,30 @@ export class Message extends Model {
 
 		return Message.send(chatId, from, 'contact', contact);
 
-    }
+	}
     
     static sendAudio(chatId, from, file, metadata, photo) {
 
-        return Message.send(chatId, from, 'audio', '').then(msgRef=> {
+			return Message.send(chatId, from, 'audio', '').then(msgRef=> {
 
-            Message.upload(file, from).then(downloadURL=> {
-		
-                let downloadFile = downloadURL
+				Message.upload(file, from).then(downloadURL=> {
 
-                msgRef.set({
-                    content: downloadFile,
-                    size: file.size,
-                    fileType: file.type,
-                    status: 'sent',
-                    photo,
-                    duration: metadata.duration
-                }, {
-                    merge: true
-                });
+					let downloadFile = downloadURL
 
-            });
+					msgRef.set({
+							content: downloadFile,
+							size: file.size,
+							fileType: file.type,
+							status: 'sent',
+							photo,
+							duration: metadata.duration
+						}, {
+								merge: true
+						});
 
-        })
+				});
+
+			});
 
     }
 
@@ -439,29 +439,29 @@ export class Message extends Model {
 
 			if (filePreview) {
 
-					Message.upload(file, from).then(downloadURL=> {
-		
-						let downloadFile = downloadURL;
-		
-							Message.upload(filePreview, from).then(downloadURL2=> {
-		
-							let downloadPreview = downloadURL2;
+				Message.upload(file, from).then(downloadURL=> {
+	
+					let downloadFile = downloadURL;
+	
+						Message.upload(filePreview, from).then(downloadURL2=> {
+	
+						let downloadPreview = downloadURL2;
 
-							msgRef.set({
-								content: downloadFile,
-								preview: downloadPreview,
-								filename: file.name,
-								size: file.size,
-								fileType: file.type,
-								status: 'sent',
-								info
-							}, {
-								merge: true
-							});
-			
+						msgRef.set({
+							content: downloadFile,
+							preview: downloadPreview,
+							filename: file.name,
+							size: file.size,
+							fileType: file.type,
+							status: 'sent',
+							info
+						}, {
+							merge: true
 						});
-
+		
 					});
+
+				});
 
 			} else {
 
