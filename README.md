@@ -1,20 +1,70 @@
 # Projeto WhatsApp Clone
 
-Projeto do curso Completo de JavaScript da HCode Treinamentos.
+
+Projeto desenvolvido no curso de javascript da [Hcode Treinamentos](https://www.hcode.com.br)
+
+
+---
+
+## 🎨 Layout
 
 ### Projeto
-![WhatsApp Clone](https://firebasestorage.googleapis.com/v0/b/hcode-com-br.appspot.com/o/whatsapp.jpg?alt=media&token=5fc78e3b-4871-424f-abfa-b765f2515d0c)
+
+<p> <img src="./assets/whatsapp-web1.png" alt="Whatsapp web" width="600px"> </p>
+
+<p>
+  <img src="./assets/whatsapp-web1.png" alt="Whatsapp web" width="400px">
+  <img src="./assets/whatsapp-web2.png" alt="Whatsapp web" width="400px">
+  <img src="./assets/whatsapp-web6.png" alt="Whatsapp web" width="400px">
+  <img src="./assets/whatsapp-web5.png" alt="Whatsapp web" width="400px">
+</p>
+
+---
+
+### Funcionalidades
+
+- envio e recebimento de mensagens
+- envio de anexos em pdf, imagens, docs e etc...
+- messagem de audio
+- captura de imagem pela webcam e envio
+- emojis
+
+entre outras...
+
+---
 
 ### Recursos Usados
 
-Lista de recursos usados em aula para este projeto
+Lista de recursos usados para este projeto
 
-| Recurso | Link |
-| ------ | ------ |
-| Webpack | https://webpack.js.org/ |
-| Firebase Authentication | https://firebase.google.com/docs/auth/?authuser=0 |
-| Cloud Firestore | https://firebase.google.com/docs/firestore/?authuser=0 |
-| Cloud Functions | https://firebase.google.com/docs/functions/?hl=pt-br |
-| Cloud Storage | https://firebase.google.com/docs/storage/?authuser=0 |
-| PDF.js | https://mozilla.github.io/pdf.js/ |
-| MediaDevices.getUserMedia() | https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia |
+[Webpack](https://webpack.js.org/) <br />
+[Firebase Authentication](https://firebase.google.com/docs/auth/?authuser=0) <br />
+[Cloud Firestore](https://firebase.google.com/docs/firestore/?authuser=0) <br />
+[Cloud Functions](https://firebase.google.com/docs/functions/?hl=pt-br) <br />
+[Cloud Storage](https://firebase.google.com/docs/storage/?authuser=0) <br />
+[PDF.js](https://mozilla.github.io/pdf.js/) <br />
+[MediaDevices.getUserMedia()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) <br />
+
+---
+
+### 💻 Executando
+
+Instale as dependências
+
+```bash
+$ npm install
+```
+
+Rode a aplicação
+
+```bash
+$ npm start
+```
+
+<strong> Sevidor:  </strong>
+
+http://localhost:8080
+
+---
+
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](/LICENSE.md) para mais detalhes.
