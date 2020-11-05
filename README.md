@@ -10,7 +10,7 @@ Projeto desenvolvido no curso de javascript da [Hcode Treinamentos](https://www.
 
 ### Projeto
 
-<p alingn="center"> <img src="./assets/whatsapp-web-conversa.png" alt="Whatsapp web" width="600px"> </p>
+<p alingn="center"> <img src="./assets/whatsapp-web-conversa.png" alt="Whatsapp web" width="800px"> </p>
 
 <p>
   <img src="./assets/whatsapp-web1.png" alt="Whatsapp web" width="400px">
